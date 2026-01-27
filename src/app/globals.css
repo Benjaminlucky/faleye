@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-poppins);
+  --color-primary-0: #ffffff;
+  --color-primary-10: #fff5ed;
+  --color-primary-20: #ffe6d1;
+  --color-primary-30: #ffd4b0;
+  --color-primary-40: #ffbe8a;
+  --color-primary-50: #d77420;
+  --color-primary-60: #c16819;
+  --color-primary-70: #a45714;
+  --color-primary-80: #7d4110;
+  --color-primary-90: #532b0a;
+  --color-primary-100: #2a1505;
+
+  --color-secondary-0: #ffffff;
+  --color-secondary-10: #e6e7f4;
+  --color-secondary-20: #c4c6e5;
+  --color-secondary-30: #9ca0d4;
+  --color-secondary-40: #6f75c0;
+  --color-secondary-50: #07106e;
+  --color-secondary-60: #060e62;
+  --color-secondary-70: #050c53;
+  --color-secondary-80: #04093e;
+  --color-secondary-90: #030629;
+  --color-secondary-100: #010314;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+html {
+  scroll-behavior: smooth;
 }
