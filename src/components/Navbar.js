@@ -1,4 +1,3 @@
-// components/Navbar.js
 "use client";
 import React, { useState, useEffect } from "react";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
@@ -13,7 +12,7 @@ const Navbar = () => {
     { name: "About us", href: "#about", id: "about" },
     { name: "Services", href: "#services", id: "services" },
     { name: "Team", href: "#team", id: "team" },
-    { name: "Why us", href: "#why-us", id: "why-us" },
+    { name: "Testimonials", href: "#testimonials", id: "testimonials" },
     { name: "Contact Us", href: "#contact", id: "contact" },
   ];
 
@@ -61,12 +60,15 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 bg-[var(--color-primary-0)]/90 backdrop-blur-md border-b border-[var(--color-secondary-10)] font-poppins">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <span className="text-2xl font-bold text-[var(--color-secondary-50)] tracking-tight">
-              Faleye{" "}
-              <span className="text-[var(--color-primary-50)]">Inc.</span>
-            </span>
+          {/* Logo Section */}
+          <div className="flex-shrink-0 flex items-center">
+            <a href="#home" className="block outline-none">
+              <img
+                src="/images/FaleyeWebsiteLogo.svg"
+                alt="Faleye Inc Logo"
+                className="h-16 w-auto object-contain hover:opacity-90 transition-opacity"
+              />
+            </a>
           </div>
 
           {/* Desktop Menu */}
@@ -102,7 +104,8 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-[var(--color-secondary-50)]"
+              className="text-[var(--color-secondary-50)] focus:outline-none"
+              aria-label="Toggle Menu"
             >
               {isOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
             </button>
@@ -117,7 +120,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[var(--color-primary-0)] overflow-hidden border-t border-[var(--color-primary-10)]"
+            className="md:hidden bg-[var(--color-primary-0)] overflow-hidden border-t border-[var(--color-secondary-10)]"
           >
             <div className="px-6 py-8 space-y-4">
               {navLinks.map((link) => (
@@ -125,7 +128,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block text-lg font-medium ${
+                  className={`block text-lg font-medium transition-colors ${
                     activeSection === link.id
                       ? "text-[var(--color-primary-50)]"
                       : "text-[var(--color-secondary-80)]"
@@ -134,6 +137,15 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
+              <div className="pt-4">
+                <a
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-center bg-[var(--color-secondary-50)] text-white px-7 py-3 rounded-full text-sm font-bold"
+                >
+                  Get Started
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

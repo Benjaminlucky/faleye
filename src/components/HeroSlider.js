@@ -12,40 +12,35 @@ const HeroSlider = () => {
       description:
         "Revolutionizing the survey industry in Nigeria with cutting-edge technology, expert precision, and unwavering commitment to excellence.",
       buttonText: "Get Started Today",
-      image:
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80",
+      image: "/images/surveyor-equipment.jpg",
     },
     {
       title: "Advanced Geospatial Mapping",
       description:
         "Harnessing state-of-the-art GPS and drone technology to deliver unparalleled accuracy in land surveying and mapping solutions.",
       buttonText: "Explore Services",
-      image:
-        "https://images.unsplash.com/photo-1581094794329-c8112c4e5190?w=1920&q=80",
+      image: "/images/advanced-geo.jpg",
     },
     {
       title: "Smart Infrastructure Planning",
       description:
         "Empowering developers and government agencies with data-driven insights for sustainable urban development and infrastructure projects.",
       buttonText: "Learn More",
-      image:
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
+      image: "images/smartInfrastructure.jpg",
     },
     {
       title: "3D Terrain Modeling",
       description:
         "Transform your projects with photorealistic 3D terrain models and advanced LiDAR scanning for precision engineering and design.",
       buttonText: "View Portfolio",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1920&q=80",
+      image: "/images/3dterrainmodelling.jpeg",
     },
     {
       title: "Digital Transformation",
       description:
         "Leading Nigeria's surveying industry into the future with AI-powered analytics, cloud-based solutions, and real-time collaboration tools.",
       buttonText: "Join the Future",
-      image:
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80",
+      image: "/images/digitalTransformation.jpeg",
     },
   ];
 

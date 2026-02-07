@@ -109,13 +109,52 @@ const Services = () => {
     },
   };
 
+  // Structured data for services
+  const servicesStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Survey Services",
+    description:
+      "Comprehensive survey and mapping services offered by Faleye Surveys",
+    itemListElement: services.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Service",
+        name: service.title,
+        description: service.description,
+        provider: {
+          "@type": "ProfessionalService",
+          name: "Faleye Surveys",
+        },
+        areaServed: {
+          "@type": "City",
+          name: "Lagos",
+          containedIn: {
+            "@type": "Country",
+            name: "Nigeria",
+          },
+        },
+      },
+    })),
+  };
+
   return (
     <section
       id="services"
       className="relative py-24 bg-gradient-to-b from-[var(--color-primary-10)] via-[var(--color-primary-0)] to-[var(--color-secondary-10)] overflow-hidden"
+      aria-labelledby="services-heading"
     >
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(servicesStructuredData),
+        }}
+      />
+
       {/* Animated Background Grid */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-30" aria-hidden="true">
         <div
           className="absolute inset-0"
           style={{
@@ -138,6 +177,7 @@ const Services = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
+        aria-hidden="true"
       />
       <motion.div
         className="absolute bottom-40 left-20 w-80 h-80 bg-[var(--color-secondary-50)]/10 rounded-full blur-3xl"
@@ -150,60 +190,64 @@ const Services = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
+        aria-hidden="true"
       />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
+        <header className="text-center mb-20">
           <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-block mb-4"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="text-sm font-bold text-[var(--color-primary-50)] uppercase tracking-wider px-4 py-2 bg-[var(--color-primary-20)] rounded-full">
-              What We Offer
-            </span>
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="inline-block mb-4"
+            >
+              <span className="text-sm font-bold text-[var(--color-primary-50)] uppercase tracking-wider px-4 py-2 bg-[var(--color-primary-20)] rounded-full">
+                What We Offer
+              </span>
+            </motion.div>
+
+            <motion.h2
+              id="services-heading"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-secondary-90)] mb-4"
+            >
+              Our{" "}
+              <span className="relative inline-block">
+                Services
+                <motion.div
+                  className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-primary-50)] to-[var(--color-secondary-50)]"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  aria-hidden="true"
+                />
+              </span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-lg md:text-xl text-[var(--color-secondary-70)] max-w-3xl mx-auto"
+            >
+              Comprehensive solutions tailored to meet your surveying and
+              mapping needs
+            </motion.p>
           </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-secondary-90)] mb-4"
-          >
-            Our{" "}
-            <span className="relative inline-block">
-              Services
-              <motion.div
-                className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-primary-50)] to-[var(--color-secondary-50)]"
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              />
-            </span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl text-[var(--color-secondary-70)] max-w-3xl mx-auto"
-          >
-            Comprehensive solutions tailored to meet your surveying and mapping
-            needs
-          </motion.p>
-        </motion.div>
+        </header>
 
         {/* Services Grid */}
         <motion.div
@@ -212,9 +256,11 @@ const Services = () => {
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          role="list"
+          aria-label="Survey services offered"
         >
           {services.map((service, index) => (
-            <motion.div
+            <motion.article
               key={index}
               variants={cardVariants}
               whileHover={{
@@ -222,10 +268,16 @@ const Services = () => {
                 transition: { duration: 0.3 },
               }}
               className="group relative"
+              role="listitem"
+              itemScope
+              itemType="https://schema.org/Service"
             >
               <div className="relative h-full bg-white rounded-2xl overflow-hidden border border-[var(--color-primary-20)] shadow-lg hover:shadow-2xl transition-all duration-500">
                 {/* Shimmer Effect */}
-                <div className="absolute inset-0 overflow-hidden">
+                <div
+                  className="absolute inset-0 overflow-hidden"
+                  aria-hidden="true"
+                >
                   <motion.div
                     variants={shimmerVariants}
                     animate="animate"
@@ -237,6 +289,7 @@ const Services = () => {
                 {/* Gradient Background */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                  aria-hidden="true"
                 />
 
                 {/* Card Content */}
@@ -246,19 +299,30 @@ const Services = () => {
                     variants={iconVariants}
                     whileHover="hover"
                     className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-xl group-hover:shadow-2xl transition-all duration-300`}
+                    aria-hidden="true"
                   >
                     <div className="text-white">{service.icon}</div>
                   </motion.div>
 
                   {/* Title */}
-                  <h3 className="text-2xl font-bold text-[var(--color-secondary-90)] group-hover:text-white mb-4 transition-colors duration-300">
+                  <h3
+                    className="text-2xl font-bold text-[var(--color-secondary-90)] group-hover:text-white mb-4 transition-colors duration-300"
+                    itemProp="name"
+                  >
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-[var(--color-secondary-70)] group-hover:text-white/90 leading-relaxed transition-colors duration-300">
+                  <p
+                    className="text-[var(--color-secondary-70)] group-hover:text-white/90 leading-relaxed transition-colors duration-300"
+                    itemProp="description"
+                  >
                     {service.description}
                   </p>
+
+                  {/* Hidden metadata for SEO */}
+                  <meta itemProp="provider" content="Faleye Surveys" />
+                  <meta itemProp="areaServed" content="Lagos, Nigeria" />
 
                   {/* Learn More Link */}
                   <motion.div
@@ -273,6 +337,7 @@ const Services = () => {
                         duration: 1.5,
                         repeat: Infinity,
                       }}
+                      aria-hidden="true"
                     >
                       →
                     </motion.span>
@@ -280,7 +345,10 @@ const Services = () => {
                 </div>
 
                 {/* Corner Accent */}
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[var(--color-primary-50)]/10 to-transparent rounded-bl-full group-hover:from-white/20 transition-all duration-300" />
+                <div
+                  className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[var(--color-primary-50)]/10 to-transparent rounded-bl-full group-hover:from-white/20 transition-all duration-300"
+                  aria-hidden="true"
+                />
 
                 {/* Bottom Glow */}
                 <motion.div
@@ -289,9 +357,10 @@ const Services = () => {
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: service.delay, duration: 0.8 }}
+                  aria-hidden="true"
                 />
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
 
@@ -313,16 +382,19 @@ const Services = () => {
             Ready to start your next project?
           </motion.p>
 
-          <motion.button
+          <motion.a
+            href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-12 py-5 bg-gradient-to-r from-[var(--color-primary-50)] to-[var(--color-primary-60)] text-white font-bold text-lg rounded-full shadow-xl shadow-[var(--color-primary-50)]/30 hover:shadow-2xl hover:shadow-[var(--color-primary-50)]/40 transition-all duration-300 overflow-hidden"
+            className="group relative inline-block px-12 py-5 bg-gradient-to-r from-[var(--color-primary-50)] to-[var(--color-primary-60)] text-white font-bold text-lg rounded-full shadow-xl shadow-[var(--color-primary-50)]/30 hover:shadow-2xl hover:shadow-[var(--color-primary-50)]/40 transition-all duration-300 overflow-hidden"
+            aria-label="Request a quote for survey services"
           >
             <span className="relative z-10 flex items-center gap-3">
               Request a Quote
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
+                aria-hidden="true"
               >
                 →
               </motion.span>
@@ -334,13 +406,17 @@ const Services = () => {
               initial={{ x: "-100%" }}
               whileHover={{ x: "0%" }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
 
       {/* Decorative Bottom Wave */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+      <div
+        className="absolute bottom-0 left-0 w-full overflow-hidden leading-none"
+        aria-hidden="true"
+      >
         <svg
           className="relative block w-full h-20"
           xmlns="http://www.w3.org/2000/svg"

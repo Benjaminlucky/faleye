@@ -7,33 +7,39 @@ const Team = () => {
   const teamMembers = [
     {
       name: "Surv. Damilola Faleye",
-      role: "Managing Director",
+      role: "Chief Executive Officer (CEO)",
       description:
         "Meticulous adherence to all government regulatory standards ensuring transparent and reliable processes.",
-      image: "/api/placeholder/400/500", // Replace with actual image path
+      image: "/images/SeyeWebsite.jpg",
       linkedin: "#",
       email: "damilola@faleyeinc.com",
       phone: "+234-XXX-XXXX-XXX",
+      jobTitle: "Chief Executive Officer",
+      sameAs: ["https://www.linkedin.com/in/damilola-faleye"], // Add actual LinkedIn URL
     },
     {
       name: "Surv. Damilola Faleye",
       role: "Managing Director",
       description:
         "Meticulous adherence to all government regulatory standards ensuring transparent and reliable processes.",
-      image: "/api/placeholder/400/500", // Replace with actual image path
+      image: "/api/placeholder/400/500",
       linkedin: "#",
       email: "damilola@faleyeinc.com",
       phone: "+234-XXX-XXXX-XXX",
+      jobTitle: "Managing Director",
+      sameAs: ["https://www.linkedin.com/in/damilola-faleye"],
     },
     {
-      name: "Surv. Damilola Faleye",
-      role: "Managing Director",
+      name: "Lucky Harmony Benjamin",
+      role: "Media and Communications",
       description:
-        "Meticulous adherence to all government regulatory standards ensuring transparent and reliable processes.",
-      image: "/api/placeholder/400/500", // Replace with actual image path
+        "Dynamic media relations and digital communications professional, translating technical expertise into engaging stakeholder experiences.",
+      image: "/images/LuckySeyeWebsite.jpg",
       linkedin: "#",
       email: "damilola@faleyeinc.com",
       phone: "+234-XXX-XXXX-XXX",
+      jobTitle: "Media and Communications Manager",
+      sameAs: ["https://www.linkedin.com/in/lucky-harmony-benjamin"],
     },
   ];
 
@@ -83,11 +89,42 @@ const Team = () => {
     },
   };
 
+  // Structured data for Team section
+  const teamStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Faleye Surveys",
+    url: "https://www.faleyesurveys.com",
+    employee: teamMembers.map((member) => ({
+      "@type": "Person",
+      name: member.name,
+      jobTitle: member.jobTitle,
+      description: member.description,
+      email: member.email,
+      telephone: member.phone,
+      image: `https://www.faleyesurveys.com${member.image}`,
+      sameAs: member.sameAs,
+      worksFor: {
+        "@type": "Organization",
+        name: "Faleye Surveys",
+      },
+    })),
+  };
+
   return (
     <section
       id="team"
       className="relative py-24 bg-gradient-to-b from-[var(--color-secondary-10)] via-[var(--color-primary-0)] to-[var(--color-primary-10)] overflow-hidden"
+      aria-labelledby="team-heading"
     >
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(teamStructuredData),
+        }}
+      />
+
       {/* Animated Background Elements */}
       <motion.div
         className="absolute top-1/4 left-10 w-96 h-96 bg-[var(--color-secondary-50)]/5 rounded-full blur-3xl"
@@ -101,6 +138,7 @@ const Team = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
+        aria-hidden="true"
       />
       <motion.div
         className="absolute bottom-1/4 right-10 w-80 h-80 bg-[var(--color-primary-50)]/5 rounded-full blur-3xl"
@@ -114,60 +152,64 @@ const Team = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
+        aria-hidden="true"
       />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
+        <header className="text-center mb-20">
           <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-block mb-4"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="text-sm font-bold text-[var(--color-secondary-50)] uppercase tracking-wider px-4 py-2 bg-[var(--color-secondary-20)] rounded-full">
-              Our Team
-            </span>
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="inline-block mb-4"
+            >
+              <span className="text-sm font-bold text-[var(--color-secondary-50)] uppercase tracking-wider px-4 py-2 bg-[var(--color-secondary-20)] rounded-full">
+                Our Team
+              </span>
+            </motion.div>
+
+            <motion.h2
+              id="team-heading"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-secondary-90)] mb-4"
+            >
+              Meet Our{" "}
+              <span className="relative inline-block">
+                Expert Team
+                <motion.div
+                  className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-secondary-50)] to-[var(--color-primary-50)]"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  aria-hidden="true"
+                />
+              </span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-lg md:text-xl text-[var(--color-secondary-70)] max-w-3xl mx-auto"
+            >
+              Dedicated professionals committed to delivering excellence in
+              every project
+            </motion.p>
           </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-secondary-90)] mb-4"
-          >
-            Meet Our{" "}
-            <span className="relative inline-block">
-              Expert Team
-              <motion.div
-                className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-secondary-50)] to-[var(--color-primary-50)]"
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              />
-            </span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl text-[var(--color-secondary-70)] max-w-3xl mx-auto"
-          >
-            Dedicated professionals committed to delivering excellence in every
-            project
-          </motion.p>
-        </motion.div>
+        </header>
 
         {/* Team Grid */}
         <motion.div
@@ -176,17 +218,25 @@ const Team = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+          role="list"
+          aria-label="Team members"
         >
           {teamMembers.map((member, index) => (
-            <motion.div
+            <motion.article
               key={index}
               variants={cardVariants}
               whileHover={{ y: -10 }}
               className="group relative"
+              role="listitem"
+              itemScope
+              itemType="https://schema.org/Person"
             >
               <div className="relative bg-gradient-to-b from-[var(--color-secondary-50)] to-[var(--color-secondary-70)] rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500">
                 {/* Decorative Top Corner */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[var(--color-primary-50)]/30 to-transparent rounded-bl-full z-10" />
+                <div
+                  className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[var(--color-primary-50)]/30 to-transparent rounded-bl-full z-10"
+                  aria-hidden="true"
+                />
 
                 {/* Image Container */}
                 <div className="relative overflow-hidden bg-[var(--color-primary-10)] mx-6 mt-6 rounded-2xl">
@@ -197,8 +247,10 @@ const Team = () => {
                   >
                     <img
                       src={member.image}
-                      alt={member.name}
+                      alt={`${member.name} - ${member.role} at Faleye Surveys`}
                       className="w-full h-full object-cover"
+                      itemProp="image"
+                      loading="lazy"
                     />
 
                     {/* Gradient Overlay on Hover */}
@@ -207,6 +259,7 @@ const Team = () => {
                       whileHover={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
                       className="absolute inset-0 bg-gradient-to-t from-[var(--color-secondary-90)]/80 via-[var(--color-secondary-70)]/40 to-transparent"
+                      aria-hidden="true"
                     />
 
                     {/* Social Links on Image Hover */}
@@ -214,6 +267,8 @@ const Team = () => {
                       initial="hidden"
                       whileHover="visible"
                       className="absolute inset-0 flex items-center justify-center gap-4"
+                      role="group"
+                      aria-label={`Social media links for ${member.name}`}
                     >
                       <motion.a
                         variants={socialVariants}
@@ -221,6 +276,8 @@ const Team = () => {
                         className="w-12 h-12 rounded-full bg-white/90 hover:bg-white flex items-center justify-center text-[var(--color-secondary-50)] hover:text-[var(--color-primary-50)] transition-colors duration-300 backdrop-blur-sm"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.3 }}
+                        aria-label={`${member.name}'s LinkedIn profile`}
+                        itemProp="sameAs"
                       >
                         <Linkedin className="w-6 h-6" />
                       </motion.a>
@@ -230,6 +287,7 @@ const Team = () => {
                         className="w-12 h-12 rounded-full bg-white/90 hover:bg-white flex items-center justify-center text-[var(--color-secondary-50)] hover:text-[var(--color-primary-50)] transition-colors duration-300 backdrop-blur-sm"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.3 }}
+                        aria-label={`Email ${member.name}`}
                       >
                         <Mail className="w-6 h-6" />
                       </motion.a>
@@ -239,6 +297,7 @@ const Team = () => {
                         className="w-12 h-12 rounded-full bg-white/90 hover:bg-white flex items-center justify-center text-[var(--color-secondary-50)] hover:text-[var(--color-primary-50)] transition-colors duration-300 backdrop-blur-sm"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.3 }}
+                        aria-label={`Call ${member.name}`}
                       >
                         <Phone className="w-6 h-6" />
                       </motion.a>
@@ -255,6 +314,7 @@ const Team = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
+                    itemProp="name"
                   >
                     {member.name}
                   </motion.h3>
@@ -267,7 +327,10 @@ const Team = () => {
                     transition={{ delay: 0.3 }}
                     className="inline-block mb-4"
                   >
-                    <span className="px-4 py-1.5 bg-[var(--color-primary-50)] text-white text-sm font-bold rounded-full">
+                    <span
+                      className="px-4 py-1.5 bg-[var(--color-primary-50)] text-white text-sm font-bold rounded-full"
+                      itemProp="jobTitle"
+                    >
                       {member.role}
                     </span>
                   </motion.div>
@@ -279,9 +342,21 @@ const Team = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 }}
+                    itemProp="description"
                   >
                     {member.description}
                   </motion.p>
+
+                  {/* Hidden metadata for SEO */}
+                  <meta itemProp="email" content={member.email} />
+                  <meta itemProp="telephone" content={member.phone} />
+                  <div
+                    itemProp="worksFor"
+                    itemScope
+                    itemType="https://schema.org/Organization"
+                  >
+                    <meta itemProp="name" content="Faleye Surveys" />
+                  </div>
 
                   {/* Bottom Accent */}
                   <motion.div
@@ -290,11 +365,15 @@ const Team = () => {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5, duration: 0.6 }}
+                    aria-hidden="true"
                   />
                 </div>
 
                 {/* Card Border Glow Effect */}
-                <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[var(--color-primary-50)]/50 transition-all duration-500" />
+                <div
+                  className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[var(--color-primary-50)]/50 transition-all duration-500"
+                  aria-hidden="true"
+                />
               </div>
 
               {/* Floating Badge */}
@@ -303,12 +382,13 @@ const Team = () => {
                 initial={{ rotate: 0 }}
                 whileHover={{ rotate: 180 }}
                 transition={{ duration: 0.6 }}
+                aria-hidden="true"
               >
                 <span className="text-white font-bold text-xl">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </motion.div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
 
@@ -330,16 +410,19 @@ const Team = () => {
             Want to join our team or collaborate with us?
           </motion.p>
 
-          <motion.button
+          <motion.a
+            href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-12 py-5 bg-gradient-to-r from-[var(--color-secondary-50)] to-[var(--color-secondary-60)] text-white font-bold text-lg rounded-full shadow-xl shadow-[var(--color-secondary-50)]/30 hover:shadow-2xl hover:shadow-[var(--color-secondary-50)]/40 transition-all duration-300 overflow-hidden"
+            className="group relative inline-block px-12 py-5 bg-gradient-to-r from-[var(--color-secondary-50)] to-[var(--color-secondary-60)] text-white font-bold text-lg rounded-full shadow-xl shadow-[var(--color-secondary-50)]/30 hover:shadow-2xl hover:shadow-[var(--color-secondary-50)]/40 transition-all duration-300 overflow-hidden"
+            aria-label="Contact Faleye Surveys team"
           >
             <span className="relative z-10 flex items-center gap-3">
               Get In Touch
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
+                aria-hidden="true"
               >
                 →
               </motion.span>
@@ -351,13 +434,14 @@ const Team = () => {
               initial={{ x: "-100%" }}
               whileHover={{ x: "0%" }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 w-full">
+      <div className="absolute bottom-0 left-0 w-full" aria-hidden="true">
         <svg
           className="w-full h-24"
           viewBox="0 0 1200 120"
