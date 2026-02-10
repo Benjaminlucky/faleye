@@ -18,11 +18,11 @@ const Team = () => {
       sameAs: ["https://www.linkedin.com/in/damilola-faleye"], // Add actual LinkedIn URL
     },
     {
-      name: "Surv. Damilola Faleye",
-      role: "Managing Director",
+      name: "Surv. Oyebode Samuel Dolapo",
+      role: "Surveying and Geoinformatics ",
       description:
-        "Meticulous adherence to all government regulatory standards ensuring transparent and reliable processes.",
-      image: "/api/placeholder/400/500",
+        "(Cadastral Surveying, Engineering/Construction Surveying, Topographic & Detail Surveys, Mapping, GIS, and Geospatial Data Analysis).",
+      image: "/images/faleyeSamuel.jpg",
       linkedin: "#",
       email: "damilola@faleyeinc.com",
       phone: "+234-XXX-XXXX-XXX",
@@ -35,6 +35,18 @@ const Team = () => {
       description:
         "Dynamic media relations and digital communications professional, translating technical expertise into engaging stakeholder experiences.",
       image: "/images/LuckySeyeWebsite.jpg",
+      linkedin: "#",
+      email: "damilola@faleyeinc.com",
+      phone: "+234-XXX-XXXX-XXX",
+      jobTitle: "Media and Communications Manager",
+      sameAs: ["https://www.linkedin.com/in/lucky-harmony-benjamin"],
+    },
+    {
+      name: "Adigun Khadijat Adebukola",
+      role: "Documentations and Construction",
+      description:
+        "Land surveying and documentation Real Estate Land construction and development",
+      image: "/images/faleyeKHADIJAT.jpg",
       linkedin: "#",
       email: "damilola@faleyeinc.com",
       phone: "+234-XXX-XXXX-XXX",

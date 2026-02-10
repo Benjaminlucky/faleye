@@ -2,6 +2,7 @@
 import AboutUs from "@/components/AboutUs";
 import ContactSection from "@/components/ContactSection";
 import HeroSlider from "@/components/HeroSlider";
+import Partners from "@/components/Partners";
 import Services from "@/components/Services";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
@@ -28,6 +29,7 @@ export default function Home() {
       <Services />
       <Team />
       <Testimonials />
+      <Partners />
       <ContactSection />
 
       {/* Structured Data for the entire page */}
