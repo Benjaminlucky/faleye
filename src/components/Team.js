@@ -42,7 +42,7 @@ const Team = () => {
       sameAs: ["https://www.linkedin.com/in/lucky-harmony-benjamin"],
     },
     {
-      name: "Adigun Khadijat Adebukola",
+      name: "Surv. Adigun Khadijat Adebukola (ANIS)",
       role: "Documentations and Construction",
       description:
         "Land surveying and documentation Real Estate Land construction and development",
